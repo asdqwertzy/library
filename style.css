@@ -1,7 +1,7 @@
 body {
     margin: unset;
     font-family: Arial, Helvetica, sans-serif;
-    height:99vh;
+    height: 99vh;
 }
 
 .header {
@@ -13,12 +13,13 @@ body {
     gap: 100px;
     align-items: center;
     border-bottom: 1px solid rgba(27, 0, 77, 0.3);
-    overflow:auto;
+    overflow: auto;
 }
 
 .content {
     height: 70%;
     background-image: linear-gradient(to bottom, rgb(212, 212, 212), rgba(238, 238, 238, 0.959));
+    display: grid;
 }
 
 input {
@@ -56,5 +57,63 @@ button {
 }
 
 button:active {
-  background-color: #d4d4d4;
+    background-color: #d4d4d4;
+}
+
+p {
+    margin: unset;
+}
+
+.card {
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    height: 250px;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    padding-left: 30px;
+    border: 1px solid rgb(27, 0, 77);
+    border-radius: 10px;
+    background-color: #d3d3d3;
+
+}
+
+.icons {
+    align-self: flex-end;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+}
+
+
+.edit-button {
+    background-image: url("icons/edit.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.remove-button {
+    background-image: url("icons/remove.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-button:hover {
+    opacity: 0.7;
 }

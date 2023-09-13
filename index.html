@@ -14,20 +14,30 @@
     <div class="header">
         <button onclick="newBook()">New Book</button>
         <div class="form">
-           <form onsubmit="handleSubmit(event)" method="post">
-            <label for="title">Title:</label>
-            <input type="text" name="title" id="title" required>
-            <label for="author">Author:</label>
-            <input type="text" name="author" id="author" required>
-            <label for="pages">Pages:</label>
-            <input type="number" name="pages" id="pages" required>
-            <label for="read">Read?</label>
-            <input type="checkbox" name="read" id="read">
+            <form onsubmit="handleSubmit(event)" method="post">
+                <label for="title">Title:</label>
+                <input type="text" name="title" id="title" required>
+                <label for="author">Author:</label>
+                <input type="text" name="author" id="author" required>
+                <label for="pages">Pages:</label>
+                <input type="number" name="pages" id="pages" required>
+                <label for="read">Read?</label>
+                <input type="checkbox" name="read" id="read">
         </div>
         <button class="submit">Submit</button>
-    </form>
+        </form>
     </div>
     <div class="content">
+        <div class="card">
+            <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
+            <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
+            <p class="pages"><span class="label">Pages:</span> 320</p>
+            <p class="read"><span class="label">Read?:</span> Yes</p>
+            <div class="icons">
+                <button class="icon-button edit-button"></button>
+                <button class="icon-button remove-button"></button>
+            </div>
+        </div>
     </div>
 </body>
 
