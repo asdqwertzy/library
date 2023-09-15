@@ -31,91 +31,30 @@
         <h1>Library</h1>
         <div class="content">
 
+        </div>
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <h2>Edit Book Entry</h2>
+                <form id="editForm">
+                    <label for="editTitle">Title:</label>
+                    <input type="text" id="editTitle" required maxlength="50">
 
-            <div class="card">
-                <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
-                <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
-                <p class="pages"><span class="label">Pages:</span> 320</p>
-                <p class="read"><span class="label">Read?:</span> Yes</p>
-                <div class="icons">
-                    <button class="icon-button read-button" title="Read toggle"></button>
-                    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-                        <button class="icon-button remove-button" title="Remove this entry"></button>
+                    <label for="editAuthor">Author:</label>
+                    <input type="text" id="editAuthor" required maxlength="50">
+
+                    <label for="editPages">Pages:</label>
+                    <input type="number" id="editPages" required>
+
+                    <label for="editRead">Read Status:</label>
+                    <input type="checkbox" id="editRead">
+                    <div class="buttons">
+                        <button type="button" id="discardButton" onclick="discardEdits()">Discard</button>
+                        <button type="button" onclick="saveEdits()">Save</button>
                     </div>
-
-
-                </div>
-            </div>
-            <div class="card">
-                <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
-                <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
-                <p class="pages"><span class="label">Pages:</span> 320</p>
-                <p class="read"><span class="label">Read?:</span> Yes</p>
-                <div class="icons">
-                    <button class="icon-button read-button" title="Read toggle"></button>
-                    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-                        <button class="icon-button remove-button" title="Remove this entry"></button>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="card">
-                <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
-                <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
-                <p class="pages"><span class="label">Pages:</span> 320</p>
-                <p class="read"><span class="label">Read?:</span> Yes</p>
-                <div class="icons">
-                    <button class="icon-button read-button" title="Read toggle"></button>
-                    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-                        <button class="icon-button remove-button" title="Remove this entry"></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
-                <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
-                <p class="pages"><span class="label">Pages:</span> 320</p>
-                <p class="read"><span class="label">Read?:</span> Yes</p>
-                <div class="icons">
-                    <button class="icon-button read-button" title="Read toggle"></button>
-                    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-                        <button class="icon-button remove-button" title="Remove this entry"></button>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="card">
-                <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
-                <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
-                <p class="pages"><span class="label">Pages:</span> 320</p>
-                <p class="read"><span class="label">Read?:</span> Yes</p>
-                <div class="icons">
-                    <button class="icon-button read-button" title="Read toggle"></button>
-                    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-                        <button class="icon-button remove-button" title="Remove this entry"></button>
-                    </div>
-
-
-                </div>
-            </div>
-            <div class="card">
-                <p class="title"><span class="label">Title:</span> Harry Potter and the Sorcerer's Stone</p>
-                <p class="author"><span class="label">Author:</span> J.K. Rowling</p>
-                <p class="pages"><span class="label">Pages:</span> 320</p>
-                <p class="read"><span class="label">Read?:</span> Yes</p>
-
-                <div class="icons">
-                    <button class="icon-button read-button" title="Read toggle"></button>
-                    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-                        <button class="icon-button remove-button" title="Remove this entry"></button>
-                    </div>
-
-
-                </div>
+                </form>
             </div>
         </div>
+
     </div>
 </body>
 

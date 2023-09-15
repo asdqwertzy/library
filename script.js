@@ -37,14 +37,16 @@ function handleSubmit(event) {
   var card = document.createElement('div');
   card.classList.add('card')
   card.innerHTML = `
-  <p class="title"><span class="label">Title:</span> ${title.value}</p>
-  <p class="author"><span class="label">Author:</span> ${author.value}</p>
-  <p class="pages"><span class="label">Pages:</span> ${pages.value}</p>
-  <p class="read"><span class="label">Read?:</span> ${read.checked ? 'Yes' : 'No'}</p>
+  <p class="title"><span class="label">Title:</span> <span class="value">${title.value}</span></p>
+  <p class="author"><span class="label">Author:</span> <span class="value">${author.value}</span></p>
+  <p class="pages"><span class="label">Pages:</span> <span class="value">${pages.value}</span></p>
+  <p class="read"><span class="label">Read?:</span> <span class="status">${read.checked ? 'Yes' : 'No'}</span></p>
   <div class="icons">
-    <button class="icon-button read-button" title="Read toggle"></button>
-    <div class="right"><button class="icon-button edit-button" title="Edit this entry"></button>
-    <button class="icon-button remove-button" title="Remove this entry"></button></div>
+    <button class="icon-button read-button" title="Read toggle" onclick="toggleReadStatus(this)"></button>
+    <div class="right">
+      <button class="icon-button edit-button" title="Edit this entry"></button>
+      <button class="icon-button remove-button" title="Remove this entry"></button>
+    </div>
   </div>
   `;
 
@@ -72,10 +74,80 @@ function removeBook(element) {
 }
 
 document.addEventListener('click', function (event) {
+  const modal = document.getElementById('editModal');
+
   if (event.target.classList.contains('remove-button')) {
     const card = event.target.closest('.card');
     if (card) {
       removeBook(card);
     }
   }
+  if (event.target.classList.contains('edit-button')) {
+    const card = event.target.closest('.card');
+    const dataIndex = card.getAttribute('data-id');
+    openEditModal(dataIndex);
+  }
+  if (event.target === modal) {
+    discardEdits();
+  }
 });
+
+
+function toggleReadStatus(button) {
+  const card = button.closest('.card');
+  const statusElement = card.querySelector('.status');
+  const dataIndex = card.getAttribute('data-id');
+
+  if (myLibrary[dataIndex].read === 'Yes') {
+    myLibrary[dataIndex].read = 'No';
+  } else {
+    myLibrary[dataIndex].read = 'Yes';
+  }
+
+  statusElement.textContent = myLibrary[dataIndex].read;
+}
+
+function discardEdits() {
+  const modal = document.getElementById('editModal');
+  modal.style.display = 'none';
+}
+
+function openEditModal(dataIndex) {
+  const modal = document.getElementById('editModal');
+  const book = myLibrary[dataIndex];
+
+  document.getElementById('editTitle').value = book.title;
+  document.getElementById('editAuthor').value = book.author;
+  document.getElementById('editPages').value = book.pages;
+  document.getElementById('editRead').checked = book.read === 'Yes';
+
+  modal.setAttribute('data-index', dataIndex);
+
+  modal.style.display = 'flex';
+}
+
+
+function saveEdits() {
+  const modal = document.getElementById('editModal');
+  const dataIndex = modal.getAttribute('data-index');
+  const book = myLibrary[dataIndex];
+
+  book.title = document.getElementById('editTitle').value;
+  book.author = document.getElementById('editAuthor').value;
+  book.pages = document.getElementById('editPages').value;
+  book.read = document.getElementById('editRead').checked ? 'Yes' : 'No';
+
+  updateBookEntry(dataIndex);
+
+  modal.style.display = 'none';
+}
+
+function updateBookEntry(dataIndex) {
+  const card = document.querySelector(`[data-id="${dataIndex}"]`);
+  const book = myLibrary[dataIndex];
+
+  card.querySelector('.title .value').textContent = book.title;
+  card.querySelector('.author .value').textContent = book.author;
+  card.querySelector('.pages .value').textContent = book.pages;
+  card.querySelector('.read .status').textContent = book.read;
+}
