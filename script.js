@@ -30,7 +30,6 @@ function handleSubmit(event) {
     return;
   }
 
-
   addBookToLibrary(title.value, author.value, pages.value, read.checked ? 'Yes' : 'No');
 
   // Create a card element and append it to the content area
@@ -55,8 +54,6 @@ function handleSubmit(event) {
 
   const content = document.querySelector('.content');
   content.appendChild(card);
-
-
 
   // Reset input fields
   console.log(`Title: ${title.value}, Author: ${author.value}, Pages: ${pages.value}, Read: ${read.checked}`);
@@ -91,6 +88,27 @@ document.addEventListener('click', function (event) {
     discardEdits();
   }
 });
+
+// Load event listener only after edit form element has loaded to prevent TypeError
+document.addEventListener('DOMContentLoaded', function () {
+
+  document.getElementById('editForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const editTitle = document.getElementById('editTitle').value;
+    const editAuthor = document.getElementById('editAuthor').value;
+    const editPages = document.getElementById('editPages').value;
+
+    if (editTitle.trim() === '' || editAuthor.trim() === '' || editPages.trim() === '') {
+      alert('Please fill in all fields.');
+    } else if (parseInt(editPages) < 0) {
+      alert('Page count can\'t be negative.');
+    } else {
+      saveEdits();
+    }
+  });
+});
+
 
 
 function toggleReadStatus(button) {

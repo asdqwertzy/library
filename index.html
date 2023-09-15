@@ -12,7 +12,7 @@
 
 <body>
     <div class="header">
-        <button onclick="newBook()">New Book</button>
+    
         <div class="form">
             <form onsubmit="handleSubmit(event)" method="post">
                 <label for="title">Title:</label>
@@ -49,7 +49,7 @@
                     <input type="checkbox" id="editRead">
                     <div class="buttons">
                         <button type="button" id="discardButton" onclick="discardEdits()">Discard</button>
-                        <button type="button" onclick="saveEdits()">Save</button>
+                        <button type="submit" class="submit">Save</button>
                     </div>
                 </form>
             </div>
